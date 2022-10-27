@@ -39,3 +39,30 @@ catkin_install_python(PROGRAMS
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
+include_directories(include ${catkin_INCLUDE_DIRS})
+
+add_library(${PROJECT_NAME} src/${PROJECT_NAME})
+target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(${PROJECT_NAME}_node src/aruco_detector/aruco_translator.py)
+add_executable(${PROJECT_NAME}_node src/color_detector/color_detector.py)
+add_executable(${PROJECT_NAME}_node src/color_detector/color_translator.py)
+add_executable(${PROJECT_NAME}_node src/nn_detector/nn_detector.py)
+add_executable(${PROJECT_NAME}_node src/nn_detector/nn_translator.py)
+add_executable(${PROJECT_NAME}_node src/rvr_localisator.py)
+add_executable(${PROJECT_NAME}_node src/rvr_localisator_viewer.py)
+
+target_link_libraries(${PROJECT_NAME}_node ${PROJECT_NAME} ${catkin_LIBRARIES})
+set_target_properties(${PROJECT_NAME}_node
+  PROPERTIES OUTPUT_NAME rvr_recognition PREFIX "")
+
+install(TARGETS ${PROJECT_NAME} ${PROJECT_NAME}_node
+  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+
+install(DIRECTORY include/${PROJECT_NAME}/
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION})
+
+install(DIRECTORY launch config
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
