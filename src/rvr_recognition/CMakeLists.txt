@@ -29,13 +29,13 @@ include_directories(
 )
 
 catkin_install_python(PROGRAMS
-   src/nodes/color_detector/color_detector
-   src/nodes/color_detector/color_translator
-   src/nodes/aruco_detector/aruco_translator
-   src/nodes/nn_detector/nn_detector
-   src/nodes/nn_detector/nn_translator
-   src/nodes/rvr_localisator
-   src/nodes/rvr_localisator_viewer
+   nodes/color_detector/color_detector
+   nodes/color_detector/color_translator
+   nodes/aruco_detector/aruco_translator
+   nodes/nn_detector/nn_detector
+   nodes/nn_detector/nn_translator
+   nodes/rvr_localisator
+   nodes/rvr_localisator_viewer
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
