@@ -43,10 +43,11 @@ catkin_install_python(PROGRAMS
 
 include_directories(include ${catkin_INCLUDE_DIRS})
 
-
-
-
-
+install(
+  DIRECTORY nodes/
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+  USE_SOURCE_PERMISSIONS
+)
 
 install(DIRECTORY launch config
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
