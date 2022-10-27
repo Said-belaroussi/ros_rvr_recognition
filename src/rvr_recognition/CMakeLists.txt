@@ -44,6 +44,13 @@ include_directories(include ${catkin_INCLUDE_DIRS})
 add_library(${PROJECT_NAME} src/${PROJECT_NAME})
 target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
 
+add_executable(${PROJECT_NAME}_node nodes/aruco_detector/aruco_translator.py)
+add_executable(${PROJECT_NAME}_node nodes/color_detector/color_detector.py)
+add_executable(${PROJECT_NAME}_node nodes/color_detector/color_translator.py)
+add_executable(${PROJECT_NAME}_node nodes/nn_detector/nn_detector.py)
+add_executable(${PROJECT_NAME}_node nodes/nn_detector/nn_translator.py)
+add_executable(${PROJECT_NAME}_node nodes/rvr_localisator.py)
+add_executable(${PROJECT_NAME}_node nodes/rvr_localisator_viewer.py)
 target_link_libraries(${PROJECT_NAME}_node ${PROJECT_NAME} ${catkin_LIBRARIES})
 set_target_properties(${PROJECT_NAME}_node
   PROPERTIES OUTPUT_NAME rvr_recognition PREFIX "")
